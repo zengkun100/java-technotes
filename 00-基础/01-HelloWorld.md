@@ -103,3 +103,5 @@ zengkun:java-technotes/ $ jar -cfm HelloWorld.jar com/example/hello/manifest.txt
 对这个打好的HelloWorld.jar包，不管我把它移动到什么地方，运行java -jar HelloWorld.jar都能输出正确的结果。
 
 前面说过jar包就是一个archive包。我们打开HelloWorld.jar包，看看它里面的内容
+![20211230-152744](https://user-images.githubusercontent.com/1425708/147730575-2b9287eb-9aba-43ca-9fdf-b6661f3cc50f.png)
+
