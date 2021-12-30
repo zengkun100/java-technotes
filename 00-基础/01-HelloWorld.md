@@ -10,29 +10,31 @@ public class HelloWorld {
 }
 ```
 
-很简单的结构，保存起来并命名为：HelloWorld.java，代表是一个源代码文件。一个java类里面只要有个main方法，就可以运行起来。main方法的签名格式比较固定，沿（chao）用（xi）下来就好了。
+保存文件命名为：HelloWorld.java。一个java类里面只要有个main方法，就可以运行起来。main方法的签名格式比较固定，沿（chao）用（xi）下来就好了。
 
 
 在源文件目录下运行
-```
+```console
 javac HelloWorld.java
 ```
-编译这个源文件，生成一个.class后缀名的文件，也就是Java的字节码（ByteCode）文件。靠着这个字节码文件，再加上Java的虚拟机（JVM），就可以实现Java语言号称的：Write once, run anywhere了。
+编译这个源文件，生成一个.class后缀名的文件，也就是Java的字节码（ByteCode）文件。有了这个字节码文件，再加上Java的虚拟机（JVM），就可以实现Java语言号称的：Write once, run anywhere了。
 
 
 同样是在这个目录下运行（注意这里指定的是类名）
-```
+```console
 java HelloWorld
 ```
 
 熟悉的Hello World!字符串输出在Console中，我们成功跑起来第一个Java程序！
 
+***
 
-另外一种日后会经常打交道的Java文件格式叫做jar包，是java archive的缩写。光看这个名字，你就能大致猜出来这个文件的结构了吧。
+另外一种日后会经常打交道的Java文件格式叫做jar包，它是java archive的缩写。光看这个名字，你就能大致猜出来这个文件的结构了吧。
 
-在命令行之行
-
+在命令行运行
+```console
 jar -cf HelloWorld.jar HelloWorld.class
+```
 
 把前一步编译出来的class文件打成jar包。单独一个class文件打成jar包意义不大，但是当你的项目中有成百上千个class文件之后，打成一个jar包之后会大大的提升程序分发的便利性。
 
@@ -50,11 +52,15 @@ Main-Class: HelloWorld
 
 ```
 然后再次打包，这次更改一下命令行参数，增加manifest文件
+```console
 jar -cfm HelloWorld.jar manifest.txt HelloWorld.class
+```
 
 再运行一次重新打好的jar包，就能看到Hello Wold的输出了
 
-写到这里，这一章还不能画上句号。在真实的环境中，我们会大量的使用package来规划类的层级结构。像本章开头的那种不在package中的HelloWorld类，你在真实工作中不可能遇到，它很有可能长这样：
+***
+
+写到这里，这一章还不能画上句号（其实我觉得已经挺长了）。在真实的环境中，我们会大量的使用package来规划类的层级结构。像本章开头的那种不在package中的HelloWorld类，你在真实工作中不可能遇到，它很有可能长这样：
 
 ``` java
 package com.example.hello;
@@ -67,7 +73,7 @@ public class HelloWorld {
 }
 ```
 
-而一旦有了这个package之后，再去执行前面的编译，打包，运行等命令的时候，就可能会出现让人困惑的错误。不信你把这个文件编译成clas文件后之后再次运行下，你会看到：
+而一旦有了这个package之后，再去执行前面的编译，打包，运行等命令的时候，就可能会出现让人困惑的错误。不信你把这个文件编译成class文件后之后再次运行下，你会看到：
 ```console
 zengkun:hello/ $ java HelloWorld
 Error: Could not find or load main class HelloWorld
@@ -102,6 +108,14 @@ zengkun:java-technotes/ $ jar -cfm HelloWorld.jar com/example/hello/manifest.txt
 ```
 对这个打好的HelloWorld.jar包，不管我把它移动到什么地方，运行java -jar HelloWorld.jar都能输出正确的结果。
 
-前面说过jar包就是一个archive包。我们打开HelloWorld.jar包，看看它里面的内容
+前面说过jar包就是一个archive包。我们打开HelloWorld.jar包，看看它里面的内容。就是一个完整的自包含的目录结构呢
+
 ![20211230-152744](https://user-images.githubusercontent.com/1425708/147730575-2b9287eb-9aba-43ca-9fdf-b6661f3cc50f.png)
+
+其实完全可以在命令行里执行
+```console
+jar -tvf HelloWorld.jar  展示jar包里都有哪些文件和目录
+jar -xvf HelloWorld.jar  抽取jar包里的文件
+```
+发现没有：除了把tar换成jar之外，命令行参数都跟tar是一样的:)
 
