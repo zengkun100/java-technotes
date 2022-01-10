@@ -1,6 +1,6 @@
 Enum值得专门开一章，它的结构还是有一丢丢的特殊的
 
-定义枚举，既不是class，也不是interface，得用专门的关键字：enum 
+定义枚举，既不是class关键字，也不是interface关键字，得用专门的关键字：enum 
 
 因为枚举默认派生自java.lang.Enum，所以enum不能再extends其它的class，但是可以implements其它的interface
 
