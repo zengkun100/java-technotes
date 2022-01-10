@@ -51,8 +51,8 @@ public enum SomeStatusEnum implements SomeInterface {
 
 
 ```java
-SomeStatusEnum status = SomeStatusEnum.CREATED
-SomeStatusEnum status = SomeStatusEnum.valueOf("CREATED")
+SomeStatusEnum status = SomeStatusEnum.CREATED;
+SomeStatusEnum status = SomeStatusEnum.valueOf("CREATED");
 ```
 
 通过上面的方式，可以定义出一个枚举的常量。用在switch语句里的时候比较简洁
